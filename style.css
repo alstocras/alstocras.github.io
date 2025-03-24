@@ -29,11 +29,13 @@ body {
     width: 100%;
     border-radius: 12px;
 }
+
+/* Navigation Buttons Styling */
 .navigation-buttons {
     display: flex;
     justify-content: center; /* Centers the buttons horizontally */
-    margin-top: 20px; /* Adds some space above the buttons */
-    gap: 10px; /* Adds space between the buttons */
+    margin-top: 20px; /* Adds space above the buttons */
+    gap: 15px; /* Adds space between the buttons */
 }
 
 .navigation-buttons button {
@@ -41,10 +43,12 @@ body {
     border: none;
     background-color: #333;
     color: white;
-    border-radius: 5px;
+    border-radius: 8px; /* Made the border radius slightly more rounded */
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .navigation-buttons button:hover {
-    background-color: #555;}
+    background-color: #555;
+    transform: scale(1.05); /* Adds a slight zoom effect on hover */
+}
