@@ -29,3 +29,6 @@ body {
     width: 100%;
     border-radius: 12px;
 }
+.comic-container {
+    align-items: center;
+}
