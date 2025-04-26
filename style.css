@@ -53,3 +53,18 @@ body {
     background-color: #555;
     transform: scale(1.05); /* Adds a slight zoom effect on hover */
 }
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF; /* Nice blue */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+a:hover {
+    background-color: #0056b3; /* Darker on hover */
+}
