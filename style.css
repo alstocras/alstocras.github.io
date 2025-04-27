@@ -68,3 +68,11 @@ body {
 .button-a:hover {
     background-color: #0056b3; /* Darker on hover */
 }
+.searchbar {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}

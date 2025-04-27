@@ -14,7 +14,12 @@
     </div>
     <div class="container">
         <h1>Archive</h1>
-        <ol>
+
+        <!-- Search Bar -->
+        <input type="text" id="search-input" placeholder="Search the archive" style="width: 90%; padding: 0.5rem; margin-bottom: 1rem; font-size: 1rem;">
+
+        <!-- Archive List -->
+        <ol id="comic-list">
             <li><a class="button-a" href="comic1.html">Escape Velocity</a></li>
             <li><a class="button-a" href="comic2.html">Heisenberg’s Dilemma</a></li>
             <li><a class="button-a" href="comic3.html">Quantum Password</a></li>
@@ -25,5 +30,37 @@
             <li><a class="button-a" href="comic8.html">Neutron Star Parking</a></li>
         </ol>
     </div>
+
+    <!-- Search Script with basic fuzzy matching -->
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const comicList = document.getElementById('comic-list');
+        const comics = comicList.getElementsByTagName('li');
+
+        function simpleFuzzyMatch(text, search) {
+            text = text.toLowerCase();
+            search = search.toLowerCase();
+            let tIndex = 0;
+            for (let sIndex = 0; sIndex < search.length; sIndex++) {
+                tIndex = text.indexOf(search[sIndex], tIndex);
+                if (tIndex === -1) return false;
+                tIndex++;
+            }
+            return true;
+        }
+
+        searchInput.addEventListener('input', function() {
+            const filter = searchInput.value;
+            for (let i = 0; i < comics.length; i++) {
+                const a = comics[i].querySelector('a');
+                const textValue = a.textContent || a.innerText;
+                if (simpleFuzzyMatch(textValue, filter)) {
+                    comics[i].style.display = "";
+                } else {
+                    comics[i].style.display = "none";
+                }
+            }
+        });
+    </script>
 </body>
 </html>
