@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: black;
     margin: 0;
 }
@@ -68,11 +68,65 @@ body {
 .button-a:hover {
     background-color: #0056b3; /* Darker on hover */
 }
-.searchbar {
-  float: right;
-  padding: 6px;
-  border: none;
-  margin-top: 8px;
-  margin-right: 16px;
-  font-size: 17px;
+/* Container for the search bar */
+.search-container {
+    margin: 20px 0; /* Add some space around the search bar */
+    text-align: center; /* Center the search bar */
 }
+
+/* Style for the input field */
+#searchInput {
+    padding: 10px;
+    font-size: 16px;
+    width: 50%; /* Adjust the width as needed */
+    max-width: 400px; /* Prevent the input from becoming too wide */
+    border: 2px solid #ddd; /* Subtle border */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background */
+    box-sizing: border-box; /* Ensure padding is included in width */
+    transition: border-color 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Change border color when focused */
+#searchInput:focus {
+    border-color: #4CAF50; /* Green border on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Optional: style for search button (if needed) */
+.search-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.search-container button:hover {
+    background-color: #45a049;
+}
+/* Style for the random comic button */
+.random-comic {
+    text-align: center;
+    margin-top: 20px; /* Space above the button */
+}
+
+.random-comic button {
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Hover effect for the random comic button */
+.random-comic button:hover {
+    background-color: #45a049;
+}
+
