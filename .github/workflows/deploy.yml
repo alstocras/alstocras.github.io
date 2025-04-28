@@ -1,0 +1,36 @@
+name: Comic Page Automation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - comics/*  # only trigger when a comic is added/changed
+
+jobs:
+  create_comic_page:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js (or Python, based on your script)
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: |
+          npm install  # if using Node.js
+          
+      - name: Generate new comic page
+        run: |
+          node generate_comic_page.js  # or use a Python script
+
+      - name: Push changes to GitHub
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Added new comic page"
+          git push

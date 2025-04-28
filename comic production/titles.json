@@ -1,0 +1,43 @@
+[
+    {
+      "title": "Neutron Star Parking",
+      "file": "comic8.png",
+      "hover": "The warning label said: 'Do not taunt planetary gravity wells.'"
+    },
+    {
+      "title": "Average Table Discussions In My Class",
+      "file": "comic7.JPG",
+      "hover": "Life 2.1.0 patch notes: Fixed bug where time moves faster in mathematics."
+    },
+    {
+        "title": "Length Contraction Excuses",
+        "file": "COMIC6.png",
+        "hover": "At everyday speeds, relativistic length contraction is tiny—but that's not going to stop me from using it as an excuse."
+    },
+    {
+        "title": "Quantum Tech Support",
+        "file": "comic5.png",
+        "hover": "The system crashes only when observed."
+    },
+    {
+        "title": "Schrödinger's Laptop",
+        "file": "comic4.JPG",
+        "hover": "The true power of quantum mechanics: guilt-free procrastination."
+      },
+      {
+        "title": "Quantum Password",
+        "file": "COMIC3.JPG",
+        "hover": "It's not my fault your login system can't handle pressure."
+      },
+      {
+        "title": "Heisenberg’s Dilemma",
+        "file": "OKCD1.jpg",
+        "hover": "Heisenberg was never great at making decisions..."
+      },
+      {
+        "title": "Escape Velocity",
+        "file": "IMG_5979.JPG",
+        "hover": "Technically, this plan is only flawed if you still care about the laws of physics. But if you are already near a black hole, maybe it is time to start breaking rules."
+      }
+  ]
+  

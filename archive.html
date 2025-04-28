@@ -3,84 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>qzrnw archive</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="navbar">
         <a href="index.html">Home</a>
         <a href="archive.html">Archive</a>
     </div>
-    
-    <!-- Search bar stays here -->
+
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search the archives" onkeyup="searchComics()">
+        <input type="text" id="searchInput" placeholder="Search comics" onkeyup="filterComics()">
     </div>
 
     <div class="container">
         <h1>Archive</h1>
-        <!-- Random Comic Button -->
-        <div class="random-comic">
-          <button onclick="goToRandomComic()">Random</button>
-        </div>
+        <ol id="comicList" reversed></ol>
+    </div>
 
-        <!-- Reversed archive list -->
-        <ol reversed id="comicList">
-            <li><a class="button-a" href="comic8.html">Neutron Star Parking</a></li>
-            <li><a class="button-a" href="comic7.html">Average Table Discussions In My Class</a></li>
-            <li><a class="button-a" href="comic6.html">Length Contraction Excuses</a></li>
-            <li><a class="button-a" href="comic5.html">Quantum Tech Support</a></li>
-            <li><a class="button-a" href="comic4.html">Schrödinger's Laptop</a></li>
-            <li><a class="button-a" href="comic3.html">Quantum Password</a></li>
-            <li><a class="button-a" href="comic2.html">Heisenberg’s Dilemma</a></li>
-            <li><a class="button-a" href="comic1.html">Escape Velocity</a></li>
-        </ol>
-    </div> <!-- Fixed this extra closing tag -->
-
-    <!-- Search Script with basic fuzzy matching -->
     <script>
-        // Correct IDs for search and comic list
-        const searchInput = document.getElementById('searchInput');
-        const comicList = document.getElementById('comicList');
-        const comics = comicList.getElementsByTagName('li');
+    async function loadComics() {
+        const response = await fetch('titles.json');
+        const comics = await response.json();
+        const list = document.getElementById('comicList');
+        list.innerHTML = '';
 
-        function simpleFuzzyMatch(text, search) {
-            text = text.toLowerCase();
-            search = search.toLowerCase();
-            let tIndex = 0;
-            for (let sIndex = 0; sIndex < search.length; sIndex++) {
-                tIndex = text.indexOf(search[sIndex], tIndex);
-                if (tIndex === -1) return false;
-                tIndex++;
-            }
-            return true;
-        }
-
-        // Search function triggered by user input
-        searchInput.addEventListener('input', function() {
-            const filter = searchInput.value;
-            for (let i = 0; i < comics.length; i++) {
-                const a = comics[i].querySelector('a');
-                const textValue = a.textContent || a.innerText;
-                if (simpleFuzzyMatch(textValue, filter)) {
-                    comics[i].style.display = "";
-                } else {
-                    comics[i].style.display = "none";
-                }
-            }
+        comics.forEach((comic, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="comic${comics.length - index}.html" class="button-a">${comic.title}</a>`;
+            list.appendChild(li);
         });
+    }
+
+    function filterComics() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const items = document.querySelectorAll('#comicList li');
+        items.forEach(li => {
+            const text = li.innerText.toLowerCase();
+            li.style.display = text.includes(input) ? '' : 'none';
+        });
+    }
+
+    loadComics();
     </script>
-    <script>
-        // Function for navigating to a random comic
-        function goToRandomComic() {
-            const comics = [
-                "comic1.html", "comic2.html", "comic3.html", "comic4.html", 
-                "comic5.html", "comic6.html", "comic7.html", "comic8.html"
-            ];
-            const randomIndex = Math.floor(Math.random() * comics.length);
-            window.location.href = comics[randomIndex]; // Redirect to random comic
-        }
-    </script>    
 </body>
 </html>
