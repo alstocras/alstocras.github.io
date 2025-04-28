@@ -10,7 +10,7 @@ const latestComic = titles[0]; // Newest comic is first
 const comicNumber = titles.length; // Latest comic number
 const comicFileName = `comic${comicNumber}.html`;
 
-// Create the HTML page
+// Create the HTML page for the new comic
 const newComicPage = `
 <!DOCTYPE html>
 <html lang="en">
@@ -43,14 +43,8 @@ const newComicPage = `
 </html>
 `;
 
-// Make sure ./comics directory exists
-const comicsDir = path.join(__dirname, 'comics');
-if (!fs.existsSync(comicsDir)) {
-    fs.mkdirSync(comicsDir);
-}
-
-// Write the new comic HTML file
-fs.writeFileSync(path.join(comicsDir, comicFileName), newComicPage);
+// Write the new comic HTML file to the same directory as the archive and index
+fs.writeFileSync(path.join(__dirname, comicFileName), newComicPage);
 
 // Update the archive
 const archivePath = './archive.html';
@@ -59,7 +53,7 @@ let archiveContent = fs.readFileSync(archivePath, 'utf8');
 // Generate new archive list dynamically from titles.json
 const archiveListHTML = titles.map((comic, idx) => {
     const number = titles.length - idx;
-    return `<li><a href="comics/comic${number}.html" class="button-a">${comic.title}</a></li>`;
+    return `<li><a href="comic${number}.html" class="button-a">${comic.title}</a></li>`;
 }).join('\n');
 
 // Replace the whole <ol>...</ol> section
