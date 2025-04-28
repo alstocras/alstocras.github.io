@@ -1,5 +1,10 @@
 [
-    {
+  {
+    "title": "Testing123",
+    "file": "pulsar.png",
+    "hover": "THis is a test to see if the github automation works, and Les see if it did."
+  },
+  {
       "title": "Neutron Star Parking",
       "file": "comic8.png",
       "hover": "The warning label said: 'Do not taunt planetary gravity wells.'"
