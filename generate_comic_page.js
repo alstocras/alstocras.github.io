@@ -43,7 +43,7 @@ const newComicPage = `
 </html>
 `;
 
-// Write the new comic HTML file to the same directory as the archive and index
+// Write the new comic HTML file to the root directory (no /comics/)
 fs.writeFileSync(path.join(__dirname, comicFileName), newComicPage);
 
 // Update the archive
@@ -56,7 +56,7 @@ const archiveListHTML = titles.map((comic, idx) => {
     return `<li><a href="comic${number}.html" class="button-a">${comic.title}</a></li>`;
 }).join('\n');
 
-// Replace the whole <ol>...</ol> section
+// Replace the whole <ol>...</ol> section in the archive
 archiveContent = archiveContent.replace(
     /<ol[^>]*>[\s\S]*?<\/ol>/,
     `<ol reversed>\n${archiveListHTML}\n</ol>`
